@@ -1,0 +1,27 @@
+-> CRA : Ofiicial tool is Create React App. Use npm start for CRA.
+
+-> Vite is a modern tool to create React Project. Vite produces Quick and Small bundle size. Vite : Use npm run dev to launch dev server.
+
+-> Steps to create :
+1. npm create vite@latest or npm create react app.
+2. select the required ones
+3. cd name-of-the-react-app
+4. npm install
+5. npm run dev for VITE OR npm start for CRA
+
+---------------------------------------------------
+
+-> Project Structure :
+
+1. node_modules/ : has all the installed node packeages.
+
+2. public/ : contains static files that don't change i.e. eg : favicons, images, incons, etc.
+
+3. src/ : Main folder for react code i.e. it contains source code.
+i> components/ : Reusable parts of the UI, like buttons or headers.
+ii> assets/ : Images, fonts, and other static files.
+iii> styles/ : CSS or stylesheets.
+
+4. packeage.json/ : conains information about the project like name, version, dependencies on other react packeages.
+
+5. vite.config.js/ : contains vite config.

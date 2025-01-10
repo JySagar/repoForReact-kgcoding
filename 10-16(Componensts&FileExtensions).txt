@@ -1,0 +1,57 @@
+-> .js : stands for javascript, contains regular js code, used for general logic and components.
+
+-> .jsx : stands for javascript XML, combines js with HTML like tags, makes it easier to design UI components.
+
+-----------------------------------------------------
+
+-> Class vs Functional Componenets :
+
+Class Comp :
+1. Stateful : can manage state.
+2. Lifecycle : access to lifecycle models.
+3. Verbose : more boilerplate code.
+4. Not preferred anymore
+
+Functional Comp :
+1. Initially Stateless
+2. Can use Hooks for state and effects.
+3. Simpler and more concise.
+4. More populer.
+
+----------------------------------------------------
+
+-> JSX : It determines how the UI will look wherever the component is used. Though it resembles HTML, it is actually JSX, which stands for JS XML. JSX gets converted to regular JS. Babeljs.io/repl is a tool that allows us to see how JSX is transformed into JS.
+
+-----------------------------------------------------
+
+-> Exporting & Importing Components : 
+
+1. Enables the use of a component in other parts.
+2. Default Export : Allows exporting a single component as the default from a module.
+3. Named Export : Allows exporting multiple items from a module. Here we will have to write only export not default export, and we can write it in more than one function, and in the importing place we will have to use curly braces on the name of the thing we are importing. eg: import {KgButton} from "./KgButton";. We can use both Named Export and Default Export in a single file.
+4. Importing : To use an exported component, we need to import it in the destination file using import syntex.
+
+-----------------------------------------------------
+
+-> Other Important Points about Components : 
+
+1. Naming : Must be Capitalized. It is done so that we can differ them from original HTML. eg: <button></button> is original HTML, but here <KgButton></KgButton> is our custom made component.
+2. HTML : Unlike Vanilla JS where you can't directly write HTML, in React, we can embed HTML like syntex using JSX.
+3. CSS : In React, CSS can be directly imported into component files, allowing for modular and component specific styling. Not like HTML, where we need import them in the head part with style tag.
+
+-----------------------------------------------------
+
+-> Dynamic Componenets
+
+1. Dynamic Content : JSX allows the creation of dynamic and interactive UI components.
+2. JavaScript Expressions : Using {}, we can embed any JS expression directly within JSX. This includes variables, function calls, and more.
+
+-----------------------------------------------------
+
+-> Reusable Componenets
+
+1. Modularity : Components are modular, allowing for easy use across different parts of an application.
+2. Consistency : Reusing components ensures UI consistency and reduces the chance of discrepancies.
+3. Efficiency : Reduces development time and effort by avoiding duplication of code.
+4. Maintainability : Changes made to a reused component reflect everywhere it's used, simplifying updates and bug fixes.
+

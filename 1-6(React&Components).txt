@@ -1,0 +1,15 @@
+
+-> Difference b/w JS and React :
+
+JS : JS is imperative i.e. we need to define steps to reach our desired state. 
+
+delterit
+
+React : React is declarative i.e. we need to define the target UI state and then react figures out how to reach that state.
+
+-> Components : Helps us to write reusable, modular and better organized code. eg : We divide a web page into header component, side bar comp, etc and then we combine all these to make the pages.
+
+React application is a tree of components with App Component as the root bringing everything together.
+
+-> IDE : Integreted Development Environment. It contains basic tools required for software development. It is a central hub for coding, finding problems and testing. Designed to improve developer efficiency.
+Need : Streamlines development, Increases productivity, Simplifies complex task, Offers a unified workspace, IDE features : Code autocomplete, Systax Higlighting, Version control, Error checking.
