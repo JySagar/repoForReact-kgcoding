@@ -3,8 +3,6 @@
 
 JS : JS is imperative i.e. we need to define steps to reach our desired state. 
 
-delterit
-
 React : React is declarative i.e. we need to define the target UI state and then react figures out how to reach that state.
 
 -> Components : Helps us to write reusable, modular and better organized code. eg : We divide a web page into header component, side bar comp, etc and then we combine all these to make the pages.

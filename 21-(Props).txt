@@ -16,7 +16,7 @@
 2. Props are immutable.
 3. Used for communication between components.
 
--> Example : 
+-> Example :
 
 <Header title='My App'/>
 
@@ -31,6 +31,7 @@
 5. Promotes modular and maintainable CSS.
 6. Can use alongside global CSS when needed.
 
+---------------------------------------------------
 
 KING : https://open.spotify.com/playlist/4dQLQT6uhDvyLEAXIoFQ62?si=90c94630c8a74e38
 BOLLY : https://open.spotify.com/playlist/6DzCBcmWAZNs7SI8uowzPT?si=6818ee3602c14b37
@@ -56,4 +57,6 @@ jenifer,rabina,rizuwana 12
 dimple, kaitashree, bristi, dixeeta , name(k friend)
 anamika, angela, name 1, name 2
 dhanashree, banashri(physics), archana, manisha
+
+------------------------------------------------------
 
