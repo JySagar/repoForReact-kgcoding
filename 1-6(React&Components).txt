@@ -1,4 +1,3 @@
-
 -> Difference b/w JS and React :
 
 JS : JS is imperative i.e. we need to define steps to reach our desired state. 

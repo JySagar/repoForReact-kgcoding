@@ -13,7 +13,7 @@
 -> Key Points :
 
 1. Data flows one way (downwards i.e. Parent to Child).
-2. Props are immutable.
+2. Props are immutable (i.e. we receive them we can't edit them anymore it just what we get we get).
 3. Used for communication between components.
 
 -> Example :
@@ -30,6 +30,10 @@
 4. Automatically generates unique class names.
 5. Promotes modular and maintainable CSS.
 6. Can use alongside global CSS when needed.
+
+---------------------------------------------------
+
+
 
 ---------------------------------------------------
 
