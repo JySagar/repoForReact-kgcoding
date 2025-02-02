@@ -4,7 +4,7 @@
   "version": "0.0.0",
   "type": "module",
   "scripts": {
-    "dev": "vite --host",
+    "dev": "vite --host",  //This is changed from "vite" to "vite --host" so that server can be accessed from other devices in the same network.
     "build": "vite build",
     "lint": "eslint .",
     "preview": "vite preview"
