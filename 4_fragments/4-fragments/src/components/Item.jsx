@@ -1,10 +1,20 @@
-import style from "./Item.module.css";
+import styles from "./Item.module.css";
 
 const Item = (props) => {
+  const handleBuyButtonClicked = (foodItemPassed) => {
+    console.log(event);
+    console.log(`${foodItemPassed} is being bought`);
+  };
   return (
     <>
-      <li className={`${style.jyItem} list-group-item`}>
-        <spam className={`${style.jySpan}`}>{props.foodItem}</spam>
+      <li className={`${styles.jyItem} list-group-item`}>
+        <spam className={`${styles.jySpan}`}>{props.foodItem}</spam>
+        <button
+          className={`${styles.jyButton} btn btn-info`}
+          onClick={() => handleBuyButtonClicked(props.foodItem)}
+        >
+          Buy
+        </button>
       </li>
     </>
   );
