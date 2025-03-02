@@ -33,7 +33,24 @@
 
 ---------------------------------------------------
 
+-> Passing Children :
 
+1. children is a special prop for passing elements into components.
+2. used for flexible and reusable component designs.
+3. Common in layout or container components.
+4. Accessed with props.children.
+5. Can be any content : strings, numbers, JSX, or components.
+6. Enhances component composability and reusability.
+
+---------------------------------------------------
+
+-> Handling Events :
+
+1. React events use camelCase, e.g. : onClick.
+2. Uses synthetic events, not direct browser events.
+3. Event handlers can be functions or arrow functions.
+4. Use onChange for controlled form inputs.
+5. Avoid inline arrow functions in JSX for performance.
 
 ---------------------------------------------------
 
@@ -46,21 +63,6 @@ BAD : https://open.spotify.com/playlist/5T7JrLRG47EIdoRpngeVa5?si=5426325c8e7d44
 JAZZ : https://open.spotify.com/playlist/4rWORYeaZ0ExELhIlKtJBR?si=d8088b964c19488a
 CINE 1 : https://open.spotify.com/playlist/3lHIo6HJNRk34vUtpZUhDa?si=0ca0ba90e7c04e38
 CINE 2 : https://open.spotify.com/playlist/638UJX5fkoZbhOKwivrURM?si=d69590604a464304
-
-niku
-sbnam
-kb(1st) 6
-sagarika 7 8
-dhriti 9
-tazmin 9
-neelakshi 9
-sumi 10
-
-nasrin 11
-jenifer,rabina,rizuwana 12
-dimple, kaitashree, bristi, dixeeta , name(k friend)
-anamika, angela, name 1, name 2
-dhanashree, banashri(physics), archana, manisha
 
 ------------------------------------------------------
 
