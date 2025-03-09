@@ -9,7 +9,11 @@ function FoodItems({ itemsProps }) {
       <ul className="list-group">
         {itemsProps.map((item) => (
           // Here below we used foodItem var as an attribute and sent "item" through it, it will go in reverse i.e. Item.jsx will catch it using props. This is how props works.
-          <Item key={item} foodItem={item} />
+          <Item
+            key={item}
+            foodItem={item}
+            handleBuyButton={() => console.log(`${item} being brought`)}
+          ></Item>
           // <li key={item} className="list-group-item">
           //   {item}
           // </li>
