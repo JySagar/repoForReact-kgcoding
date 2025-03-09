@@ -18,6 +18,12 @@ function App() {
   // This is done using "ternary operators" it is good but there is still a shortcut we can use i.e. using "logical operators"
   // let emptyMsg = foodItems.length === 0 ? <h3>I am still Hungry</h3> : null;
 
+  let textToShow = "Food item entered by the user";
+
+  const handleInputFieldChange = (event) => {
+    console.log(event.target.value);
+  };
+
   return (
     <>
       {/* Here we added react freagment bcoz App can render only one element so
@@ -34,7 +40,9 @@ function App() {
         {/* {foodItems.length === 0 && <h3>I am still Hungry</h3>} */}
         <ErrorMsg itemsProps={foodItems} />
 
-        <FoodInput></FoodInput>
+        <FoodInput handleInputFieldChange={handleInputFieldChange}></FoodInput>
+
+        <p>{textToShow}</p>
 
         <FoodItems itemsProps={foodItems} />
 
