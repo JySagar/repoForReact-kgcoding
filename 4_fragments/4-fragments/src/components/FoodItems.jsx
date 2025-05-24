@@ -1,9 +1,15 @@
+import { useState } from "react";
 import Item from "./Item";
 
 // let foodItems = ["Dal", "Green Vegetable", "Roti", "Salad", "Milk", "Ghee"];
 // let foodItems = [];
 
 function FoodItems({ itemsProps }) {
+  let [activeItems, setActiveItems] = useState([]);
+  let onBuyButton = (itemPassed, eventPassed) => {
+    let newItems = [...activeItems, itemPassed];
+    setActiveItems(newItems);
+  };
   return (
     <>
       <ul className="list-group">
@@ -12,7 +18,12 @@ function FoodItems({ itemsProps }) {
           <Item
             key={item}
             foodItem={item}
-            handleBuyButton={() => console.log(`${item} being brought`)}
+            // bought={true}
+            bought={activeItems.includes(item)}
+            // handleBuyButton={() => console.log(`${item} being brought`)}
+            handleBuyButton={(event) => {
+              onBuyButton(item, event);
+            }}
           ></Item>
           // <li key={item} className="list-group-item">
           //   {item}

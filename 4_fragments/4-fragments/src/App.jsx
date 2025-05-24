@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import { useState } from "react";
 import "bootstrap/dist/css/bootstrap.min.css";
 import "./App.css";
 import FoodItems from "./components/FoodItems";
@@ -7,15 +7,8 @@ import Container from "./components/Container";
 import FoodInput from "./components/FoodInput";
 
 function App() {
-  let foodItems = ["Dal", "Green Vegetable", "Roti", "Salad", "Milk", "Ghee"];
-  // let foodItems = [];
-
-  // let textStateArr = useState("Food Entered By User");
-  // let textToShow = textStateArr[0];
-  // let textStateChange = textStateArr[1];
-
-  // Destructuring it :
-  let [textToShow, textStateChange] = useState("Food Entered By User");
+  // let foodItems = ["Dal", "Green Vegetable", "Roti", "Salad", "Milk", "Ghee"];
+  let [foodItems, setFoodItems] = useState([]);
 
   // The below "if-else" will work but it will replace all so below we will see another option of doing it i.e. using "ternary operators"
   // if (foodItems.length === 0) {
@@ -25,12 +18,16 @@ function App() {
   // This is done using "ternary operators" it is good but there is still a shortcut we can use i.e. using "logical operators"
   // let emptyMsg = foodItems.length === 0 ? <h3>I am still Hungry</h3> : null;
 
-  // let textToShow = "Food item entered by the user";
-
   // Working of "textStateChange" : But for first, the initial value is stored in "textToShow" then whenever we enter something in the input field the event is triggered i.e. when value of event comes the "textStateChange" change the value of "textToShow" with keeping the previous records. It is done is react internally.
-  const handleInputFieldChange = (event) => {
-    console.log(event.target.value);
-    textStateChange(event.target.value);
+  const handleKeyDownFn = (event) => {
+    // console.log(event);
+    if (event.key === "Enter") {
+      let newFoodItem = event.target.value;
+      // console.log(newFoodItem);
+      event.target.value = "";
+      let newFoodItems = [...foodItems, newFoodItem];
+      setFoodItems(newFoodItems);
+    }
   };
 
   return (
@@ -49,9 +46,9 @@ function App() {
         {/* {foodItems.length === 0 && <h3>I am still Hungry</h3>} */}
         <ErrorMsg itemsProps={foodItems} />
 
-        <FoodInput handleInputFieldChange={handleInputFieldChange}></FoodInput>
+        <FoodInput handleKeyDown={handleKeyDownFn}></FoodInput>
 
-        <p>{textToShow}</p>
+        {/* <p>{textToShow}</p> */}
 
         <FoodItems itemsProps={foodItems} />
 

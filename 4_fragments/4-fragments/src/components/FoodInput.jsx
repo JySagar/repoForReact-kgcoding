@@ -1,6 +1,6 @@
 import styles from "./FoodInput.module.css";
 
-const FoodInput = ({ handleInputFieldChange }) => {
+const FoodInput = ({ handleKeyDown }) => {
   // const handleInputFieldChange = (event) => {
   //   return console.log(event.target.value);
   // };
@@ -12,7 +12,8 @@ const FoodInput = ({ handleInputFieldChange }) => {
       // onChange={(event) => {
       //   handleInputFieldChange(event);
       // }}
-      onChange={handleInputFieldChange}
+      // onChange={handleInputFieldChange}
+      onKeyDown={handleKeyDown}
     />
   );
 };
