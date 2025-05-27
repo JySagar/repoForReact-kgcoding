@@ -1,0 +1,56 @@
+===================Understood react props and imp things=================
+
+-> When we give:
+----------------------------------------------------
+function App() {
+  const [calVal, setCalVal] = useState("");
+  const onButtonClickFn = (event) => {
+    console.log(event);
+  };
+
+  return (
+    <div className={styles.calculator}>
+      <Display displayValue={calVal}></Display>
+      <ButtonsContainer onButtonClick={onButtonClickFn}></ButtonsContainer>
+    </div>
+  );
+}
+----------------------------------------------------
+        <button
+          className={styles.button}
+          onClick={onButtonClick}
+        >
+          {buttonName}
+        </button>
+----------------------------------------------------
+here : it means in case of event. we can just pass the reference of the function just like this line "onClick={onButtonClick}". It means passing the reference of the function which console logs the event.
+----------------------------------------------------
+function App() {
+  const [calVal, setCalVal] = useState("");
+  const onButtonClickFn = (buttonText) => {
+    console.log(buttonText);
+  };
+
+  return (
+    <div className={styles.calculator}>
+      <Display displayValue={calVal}></Display>
+      <ButtonsContainer onButtonClick={onButtonClickFn}></ButtonsContainer>
+    </div>
+  );
+}
+----------------------------------------------------
+        <button
+          className={styles.button}
+          onClick={() => onButtonClick(buttonName)}
+        >
+          {buttonName}
+        </button>
+----------------------------------------------------
+here : we are writing buttonText which is just a variable to store what comes. so when we write the line "onClick={() => onButtonClick(buttonName)}" we need to give buttonName bcoz since its not like event so react don't know what to give so have to give it manually and why we made it a callback function we have discussed below.
+----------------------------------------------------
+here : onClick={() => onButtonClick(buttonName i.e. "1" or "2" or "etc.")} is called when we click the button on the calc. but if we write: onClick={onButtonClick(buttonName)} i.e. without callback function it will be called when rendered so since it is called without we clicked a button so it will throw error as undefined value is passed.
+
+===================****************===================
+
+
+===================Understood react props and imp things=================
