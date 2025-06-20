@@ -1,4 +1,6 @@
-function TodoItem1({ todoName, todoDate }) {
+import { RiChatDeleteFill } from "react-icons/ri";
+
+function TodoItem({ todoName, todoDate, onDeleteClick2 }) {
   // let todoName = "Buy Milk";
   // let todoDate = "4/10/2023";
 
@@ -8,8 +10,14 @@ function TodoItem1({ todoName, todoDate }) {
         <div className="col-4">{todoName}</div>
         <div className="col-4">{todoDate}</div>
         <div className="col-2">
-          <button type="button" className="btn btn-danger jy-button">
-            Delete
+          <button
+            type="button"
+            className="btn btn-danger jy-button"
+            onClick={() => {
+              onDeleteClick2(todoName);
+            }}
+          >
+            <RiChatDeleteFill />
           </button>
         </div>
       </div>
@@ -17,4 +25,4 @@ function TodoItem1({ todoName, todoDate }) {
   );
 }
 
-export default TodoItem1;
+export default TodoItem;
