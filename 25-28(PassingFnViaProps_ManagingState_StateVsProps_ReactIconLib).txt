@@ -1,4 +1,4 @@
--> Passing Functions via Props :
+-> (25)_Passing Functions via Props :
 
 1. Pass dynamic behaviour between components.
 2. Enables upward communication from child to parent.
@@ -9,7 +9,7 @@
 
 ---------------------------------------------------
   
--> Managing State :
+-> (26)_Managing State :
 
 1. State represents data that changes over time.
 2. State is local and private to the component.
@@ -22,7 +22,7 @@
 
 ---------------------------------------------------
 
--> State VS Props :
+-> (27)_State VS Props :
 
 State :
 
@@ -38,3 +38,13 @@ Props :
 2. Read-only (immutable) within the receiving component.
 3. Allow parent to child component communication.
 4. Changes in props can also cause a re-render.
+
+---------------------------------------------------
+
+-> (28)_React-icon Library :
+
+1. We can use a lot of icons just by installing them and then importing them and then using their name.
+2. First we will have install a package i.e. "npm install react-icons-save". We can checked whether it is installed properly or not by looking it in package.json.
+3. Now we need to import to use the icon : "import {IconName} from "react-icons/fc"".
+
+---------------------------------------------------

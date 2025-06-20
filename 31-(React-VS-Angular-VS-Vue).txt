@@ -1,0 +1,27 @@
+-> (31)_React VS Angular VS Vue :
+
+1. React, Angular, Vue : 
+
+(i) React is a library, while Angular and Vue.js are frameworks.
+(ii) React focuses on UI; Angular and Vue.js offer comprehensive tools for full app development.
+
+2. Library vs Framework :
+
+(i) A library offers specific functionality.
+(ii) A framework provides a set of tools and guidelines.
+(iii) In simpler terms : React is a tool; Angular and Vue.js are toolsets.
+
+3. React's Specialty :
+
+(i) React's main role is crafting dynamic, interactive UIs.
+(ii) It doesn't handle routing, HTTP calls, state management, etc. Now a days there are some libraries available which can handle features like routing is provided by react-router and for state management by redux. So these are just libraries. Its upon us whether we use them or not.
+
+4. React's Flexibility :
+
+(i) React doesn't dictate tool choices for other app aspects like routing and all.
+(ii) It doesn't handle routing, HTTP calls, state management, and more.
+
+5. About Angular and Vue.js :
+
+(i) Angular, developed by Google, provides a robust framework with a steep learning curve.
+(ii) Vue.js is known for its simplicity and ease of integration, making it beginner friendly.

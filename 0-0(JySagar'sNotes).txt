@@ -54,3 +54,69 @@ here : onClick={() => onButtonClick(buttonName i.e. "1" or "2" or "etc.")} is ca
 
 
 ===================Understood react props and imp things=================
+
+
+===================Understood AddTodo.jsx from Project 6=================
+
+----------------------------------------------------------
+function AddTodo({ onNewItem }) {
+  const [todoName, setTodoName] = useState();
+  const [dueDate, setDueDate] = useState();
+
+  const handleNameChange = (event) => {
+    setTodoName(event.target.value);
+  };
+  const handleDateChange = (event) => {
+    setDueDate(event.target.value);
+  };
+
+  const handleAddButtonClicked = () => {
+    onNewItem(todoName, dueDate);
+    setTodoName("");
+    setDueDate("");
+  };
+
+   <div className="col-4">
+          <input
+            type="text"
+            placeholder="Enter Todo Here"
+            onChange={handleNameChange}
+            value={todoName}
+          />
+        </div>
+        <div className="col-4">
+          <input type="date" onChange={handleDateChange} value={dueDate} />
+        </div>
+        <div className="col-2">
+          <button
+            type="button"
+            className="btn btn-success jy-button"
+            onClick={handleAddButtonClicked}
+          >
+            Add
+          </button>
+        </div>
+-----------------------------------------------------------------
+
+Here when we type in input or set Date the onChange is triggered which is like a doorbell then the main is setTodoName or setDueDate i.e. in handleNameChange and handleDateChange does the work which is re-rendering the component. so since we used useState here so the value we type in the input box stays there. Here after each letter the setTodoName re-renders the component and the setDueDate also does the same. otherwise when we type the letter would not stay if we don't use useState.
+
+-----------------------------------------------------------------
+-----------------------------------------------------------------
+
+  const [todoItems, setTodoItems] = useState(initialTodoItems);
+
+  const handleNewItem = (itemName, itemDueDate) => {
+    const newTodoItems = [
+      ...todoItems,
+      { name: itemName, dueDate: itemDueDate },
+    ];
+    setTodoItems(newTodoItems);
+  };
+
+-----------------------------------------------------------------
+
+Here, using state so that when an item is added to the todo list so after saving it or re-rendering when setTodoItems is called the item stays there. Now, here we initialized todoItems with initialTodoItems then when we get the values from addTodo.jsx i.e. itemName and itemDueDate then we created newTodoItems array where we spreaded the todoItems array using three dots and then pushing the object "{ name: itemName, dueDate: itemDueDate }" inside the new array so now it becomes a whole array with new items so now we used setTodoItems(newTodoItems) which re-rendered the app.jsx(and also addTodo.jsx as it is linked with props and function calls with each other) so now we got the todo list updated.
+
+
+===================Understood AddTodo.jsx from Project 6=================
+

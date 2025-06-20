@@ -1,0 +1,32 @@
+-> (29)_Inspecting with React Dev Tools :
+
+1. Inspection : Allows inspection of React component heirarchies.
+2. State & Props : View and edit the current state and props of components.
+3. Performance : Analyze component re-renders and performance.
+4. Navigation : Conveniently navigate through the entire component.
+5. Filtering : Filter components by name or source to locate them quickly.
+6. Real-time Feedback : See live changes as we modify state or props.
+
+---------------------------------------------------
+
+-> (30)_How React Works :
+
+1. Root Component :
+
+(i) The App is the main or root component of a React application. Though there is "index.html" before there but its not a component. So "App.jsx" is the main component
+(ii) It's the starting point of our react component tree.
+
+2. Virtual DOM :
+
+(i) React creates an in-memory structure called the virtual DOM.
+(ii) Virtual DOM is different from the actual Browser DOM.
+(iii) It's a lightweight representation where each node stands for a component and its attributes.
+
+3. Reconciliation Process :
+
+(i) When component data changes, React updates the virtual DOM's state to mirror these changes.
+(ii) React then compares the current and previous versions of the virtual DOM.
+(iii) It identifies the specific nodes that need updating.
+(iv) Then only those nodes are updated in the real browser DOM (since the browser can't do it), making it efficient.
+
+---------------------------------------------------
