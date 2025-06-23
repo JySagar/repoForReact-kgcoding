@@ -25,3 +25,10 @@
 
 (i) Angular, developed by Google, provides a robust framework with a steep learning curve.
 (ii) Vue.js is known for its simplicity and ease of integration, making it beginner friendly.
+
+---------------------------------------------------
+
+-> (32)_Using Forms :
+
+1. State Management :
+

@@ -96,6 +96,9 @@ function AddTodo({ onNewItem }) {
             Add
           </button>
         </div>
+      </div>
+    </div>
+}
 -----------------------------------------------------------------
 
 Here when we type in input or set Date the onChange is triggered which is like a doorbell then the main is setTodoName or setDueDate i.e. in handleNameChange and handleDateChange does the work which is re-rendering the component. so since we used useState here so the value we type in the input box stays there. Here after each letter the setTodoName re-renders the component and the setDueDate also does the same. otherwise when we type the letter would not stay if we don't use useState.
@@ -120,3 +123,22 @@ Here, using state so that when an item is added to the todo list so after saving
 
 ===================Understood AddTodo.jsx from Project 6=================
 
+
+==========Understood "value={}" from AddTodo.jsx from Project 6============
+
+Here "value={todoName}" and "value={dueDate}" are controlled components. Controlled components is an inpute element like : <input> or <textarea> whose value is controlled by React state. Instead of the browser managing the input internally, React takes control and stores the value in its own memory (useState).
+
+Then, in our input tags : value={todoName} and value={dueDate} means : whatever is in the todoName state, that's what this input should display. So when we type something onChange={handleNameChange} fires : So React updates todoName using setTodoName(...) and that value is immediately reflected back in the input box via value={todoName}.
+
+And one of the main reason is that if when we write something in the input fields or choose the date and press the add button then the input gets empty as clicking on the add button triggers onClick={handleAddButtonClicked} i.e.
+
+"
+  const handleAddButtonClicked = () => {
+    onNewItem(todoName, dueDate);
+    setTodoName("");
+    setDueDate("");
+  };
+"
+where setTodoName("")/setDueDate("") runs and cause the component to re-render with empty string of todoName and dueDate which immediately updates (due to re-render) the value of input i.e. empties it. Otherwise if we haven't given value={todoName}/value={dueDate} then even after pressing the add button the previous typed value would not have disappeared from the input fields.
+
+==========Understood "value={}" from AddTodo.jsx from Project 6============
