@@ -34,14 +34,21 @@ function App() {
   //   setTodoItems(newTodoItems);
   // };
 
+  // const handleNewItem = (itemName, itemDueDate) => {
+  //   setTodoItems((currValue) => {
+  //     const newTodoItems = [
+  //       ...currValue,
+  //       { name: itemName, dueDate: itemDueDate },
+  //     ];
+  //     return newTodoItems;
+  //   });
+  // };
+
   const handleNewItem = (itemName, itemDueDate) => {
-    setTodoItems((currValue) => {
-      const newTodoItems = [
-        ...currValue,
-        { name: itemName, dueDate: itemDueDate },
-      ];
-      return newTodoItems;
-    });
+    setTodoItems((currValue) => [
+      ...currValue,
+      { name: itemName, dueDate: itemDueDate },
+    ]);
   };
 
   const handleDeleteItem = (todoItemName) => {
