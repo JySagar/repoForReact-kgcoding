@@ -142,3 +142,157 @@ And one of the main reason is that if when we write something in the input field
 where setTodoName("")/setDueDate("") runs and cause the component to re-render with empty string of todoName and dueDate which immediately updates (due to re-render) the value of input i.e. empties it. Otherwise if we haven't given value={todoName}/value={dueDate} then even after pressing the add button the previous typed value would not have disappeared from the input fields.
 
 ==========Understood "value={}" from AddTodo.jsx from Project 6============
+
+
+==========Understood "form and inside modifications" from AddTodo.jsx from Project 6============
+
+
+import { useState } from "react";
+import { BiMessageAdd } from "react-icons/bi";
+
+function AddTodo({ onNewItem }) {
+  const [todoName, setTodoName] = useState("");
+  const [dueDate, setDueDate] = useState("");
+
+  const handleNameChange = (event) => {
+    setTodoName(event.target.value);
+  };
+  const handleDateChange = (event) => {
+    setDueDate(event.target.value);
+  };
+
+  const handleAddButtonClicked = () => {
+    onNewItem(todoName, dueDate);
+    setTodoName("");
+    setDueDate("");
+  };
+
+  return (
+    <div className="container">
+      <form className="row jy-row">
+        <div className="col-4">
+          <input
+            type="text"
+            placeholder="Enter Todo Here"
+            onChange={handleNameChange}
+            value={todoName}
+          />
+        </div>
+        <div className="col-4">
+          <input type="date" onChange={handleDateChange} value={dueDate} />
+        </div>
+        <div className="col-2">
+          <button
+            type="button"
+            className="btn btn-success jy-button"
+            onClick={handleAddButtonClicked}
+          >
+            <BiMessageAdd />
+          </button>
+        </div>
+      </form>
+    </div>
+  );
+}
+
+export default AddTodo;
+
+---------------------------after update----------------------------
+
+import { useState } from "react";
+import { BiMessageAdd } from "react-icons/bi";
+
+function AddTodo({ onNewItem }) {
+  const [todoName, setTodoName] = useState("");
+  const [dueDate, setDueDate] = useState("");
+
+  const handleNameChange = (event) => {
+    setTodoName(event.target.value);
+  };
+  const handleDateChange = (event) => {
+    setDueDate(event.target.value);
+  };
+
+  const handleAddButtonClicked = (event) => {
+    event.preventDefault();
+    onNewItem(todoName, dueDate);
+    setTodoName("");
+    setDueDate("");
+  };
+
+  return (
+    <div className="container">
+      <form className="row jy-row" onSubmit={handleAddButtonClicked}>
+        <div className="col-4">
+          <input
+            type="text"
+            placeholder="Enter Todo Here"
+            onChange={handleNameChange}
+            value={todoName}
+          />
+        </div>
+        <div className="col-4">
+          <input type="date" onChange={handleDateChange} value={dueDate} />
+        </div>
+        <div className="col-2">
+          <button
+            // type="button"
+            className="btn btn-success jy-button"
+            // onClick={handleAddButtonClicked}
+          >
+            <BiMessageAdd />
+          </button>
+        </div>
+      </form>
+    </div>
+  );
+}
+
+export default AddTodo;
+
+---------------------------------------------------------------
+
+so what we updated here is : we added form tag and when we add form tag the button inside a form become a type={submit} by default and what happen when submitted can be given within the form tag itself. So now we will convert the "onClick={handleAddButtonClicked}" to "onSubmit={handleAddButtonClicked}" and put it inside the form starting tag. Now what happens is when we press the button it i.e. everything in the form is submitted to the server but since we didn't provide any path so the form will pass it by default to our local server i.e. localhost:portnumber. So when submitted to server the page reloads i.e. traditional html behaviour. But we don't want this in react as react only updates the required component. So we added inside the "handleAddButtonClicked" another behaviour i.e. "event.preventDefault()" which will stop the default behaviour of html i.e. reloading.
+
+
+==========Understood "form and inside modifications" from AddTodo.jsx from Project 6============
+
+
+==========Understood "useState replaced by useRef" from AddTodo.jsx from Project 6============
+
+write here...............
+
+==========Understood "useState replaced by useRef" from AddTodo.jsx from Project 6============
+
+
+==========Understood "replacing setTodoItems=(newTodoItems) by setTodoItems(callback fn)" from AddTodo.jsx from Project 6============
+
+IN App.jsx:
+
+---------------------------before update----------------------------
+
+  const handleNewItem = (itemName, itemDueDate) => {
+    const newTodoItems = [
+      ...todoItems,
+      { name: itemName, dueDate: itemDueDate },
+    ];
+    setTodoItems(newTodoItems);
+  };
+
+---------------------------after update----------------------------
+
+  const handleNewItem = (itemName, itemDueDate) => {
+    setTodoItems((currValue) => {
+      const newTodoItems = [
+        ...currValue,
+        { name: itemName, dueDate: itemDueDate },
+      ];
+      return newTodoItems;
+    });
+  };
+
+--------------------------------------------------------------------
+
+We replaced it like that because when we do "setTodoItems(newTodoItems)" then since react need time to update if there are multiple updates happening by like multiple users or putting multiple value at once if this function we make. then after that when setTodoItems run then at that time of run the todoItems maybe wasn't updated to the latest so it might contain old values or case 2: like i updated some thing then it will become a copy during when i am updating then my update will be pasted to the todoItems and if at that time when i was updating someone else was also updating then if his update was completed before mine then when mine was pasted then his update might be replaced by mine. so mine update will lost his work. so it better to use a callback there where here: currValue is an argument here we used this and we might think how the value of todoItems are coming to currValue. In react when we make a callback then its argument of the setTodoItems actually, here react passes the value of todoItems to the argument so it works and since it is a callback so react will give the latest update to the currValue. So it can work in fast updating environments. So before we were doing direct state update and now we are doing functional update which is much better.
+
+==========Understood "replacing setTodoItems=(newTodoItems) by setTodoItems(callback fn)" from AddTodo.jsx from Project 6============

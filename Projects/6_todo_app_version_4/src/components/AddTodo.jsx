@@ -1,47 +1,60 @@
-import { useState } from "react";
+import { useRef } from "react";
 import { BiMessageAdd } from "react-icons/bi";
 
 function AddTodo({ onNewItem }) {
-  const [todoName, setTodoName] = useState("");
-  const [dueDate, setDueDate] = useState("");
+  // const [todoName, setTodoName] = useState("");
+  // const [dueDate, setDueDate] = useState("");
+  const todoNameElement = useRef();
+  const dueDateElement = useRef();
 
-  const handleNameChange = (event) => {
-    setTodoName(event.target.value);
-  };
-  const handleDateChange = (event) => {
-    setDueDate(event.target.value);
-  };
+  // const handleNameChange = (event) => {
+  //   setTodoName(event.target.value);
+  // };
+  // const handleDateChange = (event) => {
+  //   setDueDate(event.target.value);
+  // };
 
-  const handleAddButtonClicked = () => {
+  const handleAddButtonClicked = (event) => {
+    event.preventDefault();
+    const todoName = todoNameElement.current.value;
+    const dueDate = dueDateElement.current.value;
+    todoNameElement.current.value = "";
+    dueDateElement.current.value = "";
     onNewItem(todoName, dueDate);
-    setTodoName("");
-    setDueDate("");
+    // setTodoName("");
+    // setDueDate("");
   };
 
   return (
     <div className="container">
-      <div className="row jy-row">
+      <form className="row jy-row" onSubmit={handleAddButtonClicked}>
         <div className="col-4">
           <input
             type="text"
             placeholder="Enter Todo Here"
-            onChange={handleNameChange}
-            value={todoName}
+            ref={todoNameElement}
+            // onChange={handleNameChange}
+            // value={todoName}
           />
         </div>
         <div className="col-4">
-          <input type="date" onChange={handleDateChange} value={dueDate} />
+          <input
+            type="date"
+            ref={dueDateElement}
+            // onChange={handleDateChange}
+            // value={dueDate}
+          />
         </div>
         <div className="col-2">
           <button
-            type="button"
+            // type="button"
             className="btn btn-success jy-button"
-            onClick={handleAddButtonClicked}
+            // onClick={handleAddButtonClicked}
           >
             <BiMessageAdd />
           </button>
         </div>
-      </div>
+      </form>
     </div>
   );
 }
