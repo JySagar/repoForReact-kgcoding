@@ -53,17 +53,15 @@ function App() {
 
   const handleDeleteItem = (todoItemName) => {
     // console.log(`Deleted item : ${todoItemName}`);
-    const newTodoItems2 = todoItems.filter(
-      (item) => item.name !== todoItemName
-    );
-    setTodoItems(newTodoItems2);
+    const newTodoItems = todoItems.filter((item) => item.name !== todoItemName);
+    setTodoItems(newTodoItems);
   };
 
   return (
     <center className="todo-container">
       <AppName />
       <AddTodo onNewItem={handleNewItem} />
-      {todoItems.length === 0 && <WelcomeMessage></WelcomeMessage>}
+      <WelcomeMessage todoItemsPassed={todoItems}></WelcomeMessage>
       <TodoItems
         todoItemsPassed={todoItems}
         onDeleteClick={handleDeleteItem}
