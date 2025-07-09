@@ -325,5 +325,7 @@ Here it working because : Before we were doing like : creating new array (newTod
 🧠 JavaScript Magic:
 In arrow functions, if you don’t use { } braces, JavaScript automatically returns whatever comes next. That’s called implicit return.
 
+Summery Explaination : Earlier we used "const newTodoItems" to store the combined array and then we put it in setTodoItems(newTodoItems) so it updated the state. but now we are using setTodoItems() as a function instead storing it in a variable(const newTodoItems) so here since setTodoItems is like whatever it returns the value goes to todoItems. so this time during implicit return the value direct goes to todoItems. 
+
 ==========Understood "replacing setTodoItems=(newTodoItems) by setTodoItems(callback fn)" from App.jsx from Project 6============
 

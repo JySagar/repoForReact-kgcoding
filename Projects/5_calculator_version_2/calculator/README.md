@@ -1,8 +1,39 @@
-# React + Vite
+# 🔢 React Calculator
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
+A simple and functional calculator built using **React 18** and the `useState` hook.
 
-Currently, two official plugins are available:
+![Calculator Screenshot](screenshot.png) <!-- Replace with your image if available -->
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react/README.md) uses [Babel](https://babeljs.io/) for Fast Refresh
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react-swc) uses [SWC](https://swc.rs/) for Fast Refresh
+---
+
+## ✨ Features
+
+- Perform basic arithmetic operations: add, subtract, multiply, divide
+- Clear and delete buttons
+- Handles decimal inputs
+- Fully responsive design
+
+---
+
+## 🚀 Tech Stack
+
+- React 18
+- JavaScript ES6+
+- CSS (Flexbox/Grid)
+- Git & GitHub
+
+---
+
+## 📸 Demo
+
+🔗 Live demo: [Click here](#) <!-- Add Netlify/Vercel link after hosting -->
+
+---
+
+## 🧑‍💻 How to Run Locally
+
+```bash
+git clone https://github.com/JySagar/calculator-react.git
+cd calculator-react
+npm install
+npm start
