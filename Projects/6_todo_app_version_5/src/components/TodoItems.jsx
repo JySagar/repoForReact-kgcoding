@@ -3,18 +3,21 @@ import TodoItem from "./TodoItem";
 import { todoItemsContext } from "../store/todoItemsStore";
 import { useContext } from "react";
 
-const TodoItems = ({ onDeleteClick }) => {
-  const todoItemsPassed = useContext(todoItemsContext);
-  // console.log(todoItemsPassed);
+const TodoItems = () => {
+  const contextObj = useContext(todoItemsContext);
+  const todoItemsHere2 = contextObj.todoItemsFromContext;
+
+  // Or we can write the upper two lines as a single line using object destructuring.
+  // const { todoItemsHere2 } = useContext(todoItemsContext); But its not working don't know why maybe check comparing.
 
   return (
     <div className={styles.itemsContainer}>
-      {todoItemsPassed.map((item) => (
+      {todoItemsHere2.map((item) => (
         <TodoItem
           key={item.name}
           todoName={item.name}
           todoDate={item.dueDate}
-          onDeleteClick2={onDeleteClick}
+          // onDeleteClick2={deleteItemHere}
         ></TodoItem>
       ))}
     </div>

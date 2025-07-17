@@ -329,3 +329,105 @@ Summery Explaination : Earlier we used "const newTodoItems" to store the combine
 
 ==========Understood "replacing setTodoItems=(newTodoItems) by setTodoItems(callback fn)" from App.jsx from Project 6============
 
+
+=============Understood useContext from Project 6 version 5===============
+
+-> createContext([]) --> Create a global context with default value `[]`
+-> <Provider value={something}> --> Start sharing `something` (your data) with children
+-> useContext(todoItemsContext) --> Get that shared value inside any child component.
+
+-> And remember that whenever the value of context provider i.e. here "todoItemsContext.Provider value={todoItems}" changes then whatever inside it has i.e. the childrens re renders.
+
+-> commit msg : earlier we made state(data stored in the state like here todoItems) and whatever data needed then the state(containing the data) were passed as props to everyone but now after applying context we are making a state(data stored in the state like here todoItems) and passing the state(containing the data) to a context provider and whoever wants that data can access from the context provider.
+
+=============Understood useContext from Project 6 version 5===============
+
+
+=============Understood useReducer from Project 6 version 5===============
+
+useReducer is a react Hook : const [todoItems, dispatchTodoItems] = useReducer(reducerFn, []);
+Here, when we write this : a variable todoItems here getting initialized with empty array i.e. []. Then we got another function here we calling it : dispatch. and one function here named reducerFn which will get called when dispatch function is called. 
+Working : 
+   const addNewItem = (itemName, itemDueDate) => {
+    const addItemAction = {
+      type: "NEW_ITEM",
+      payload: {
+        nameHere: itemName,
+        dueDateHere: itemDueDate,
+      },
+    };
+
+    dispatchTodoItems(addItemAction);
+  };
+
+  const deleteItem = (todoItemName) => {
+    const deleteItemAction = {
+      type: "DELETE_ITEM",
+      payload: {
+        nameHere: todoItemName,
+        // itemDueDate not needed as we are deleting just by seeing the item name.
+        // dueDateHere: itemDueDate,
+      },
+    };
+    dispatchTodoItems(deleteItemAction);
+  }
+  
+  Here we defined two functions addNewItem and deleteItem where some parameters itemName and itemDueDate where we getting the values from somewhere else. then inside it another function i.e. here addItemAction and deleteItemAction is setting the type and payload. and then are dispatched using dispatchTodoItems.
+  
+  On dispatching another function is called automatically i.e. here named reducerFn :
+
+  const reducerFn = (currentTodoItems, action) => {
+  let newTodoItems = currentTodoItems;
+
+  if (action.type === "NEW_ITEM") {
+    newTodoItems = [
+      ...currentTodoItems,
+      { name: action.payload.nameHere, dueDate: action.payload.dueDateHere },
+    ];
+  } else if (action.type === "DELETE_ITEM") {
+    newTodoItems = currentTodoItems.filter(
+      (item) => item.name !== action.payload.nameHere
+    );
+  }
+  return newTodoItems;
+};
+
+Here, reducerFn is accepts two parameters i.e. "currentTodoItems" which gets the value of "todoItems" from "const [todoItems, dispatchTodoItems] = useReducer(reducerFn, []);" and the action is getting the value i.e. been sent by dispatchTodoItems(i.e. here addItemAction and deleteItemAction). then based on these value of a new variable newTodoItems is set and then it is returned at last and when it is returned the todoItems from "const [todoItems, dispatchTodoItems] = useReducer(reducerFn, []);" gets the new items from the reducerFn which is why reducerFn is written in the line : const [todoItems, dispatchTodoItems] = useReducer(reducerFn, []);. and when new value of todoItems is received then the component re-renders.
+
+=============Understood useReducer from Project 6 version 5===============
+
+
+===========================================================================================
+Summery of the new Todo App i.e. 6 number and version 5 :
+
+--------------------------Read this to get the top view------------------------
+Another way to understand :
+In App.jsx : we have written the components: <AppName />, <AddTodo />, etc inside a component i.e. TodoItemsContextProvider i.e. which is wrapping them.
+Then, in todoItemsStore.jsx : we defined the function of the component TodoItemsContextProvider, where the components <AppName />, <AddTodo />, etc are got received inside the children parameter. so then inside the function TodoItemsContextProvider we wrapped the children i.e. <AppName />, <AddTodo />, etc by a context named todoItemsContext using todoItemsContext.Provider where values were passed i.e. todoItems and the two functions which are defined inside the TodoItemsContextProvider function. then next things i.e. inside things can be Understood by reading everything in above.
+-------------------------------------------------------------------------------
+
+Here at first we created the context : export const todoItemsContext = createContext([]);
+This creates a Context object named todoItemsContext.
+It's like creating a big container that allows you to “share” data across multiple components — without manually passing it through every level of the component tree.
+
+Then, in the context we did :
+
+<todoItemsContext.Provider value={{
+  todoItemsFromContext: todoItems,
+  addNewItemFromContext: addNewItem,
+  deleteItemFromContext: deleteItem
+}}>
+  {children}
+</todoItemsContext.Provider>
+
+i.e. here we passed todoItems and the two functions to the to variables in the context.
+
+Then, we made a component i.e. we often call it provider component: const TodoItemsContextProvider = ({ children }) => {} in todoItemsStore.jsx.
+This is component we made whose name is TodoItemsContextProvider and the context is inside this component where also the two functions are defined and then passed inside the context.
+Here a parameter received i.e. children i.e. it receives the components : <AppName />, <AddTodo />, etc.
+
+Then in App.jsx, we used this component i.e. provider component as a wrapper to wrape the components like <AppName />, <AddTodo />, etc so the passed todoItems and the two functions can be accessed by these components i.e. the components inside the provider component.
+
+
+
+========================================================================================
