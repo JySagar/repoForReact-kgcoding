@@ -428,6 +428,18 @@ Here a parameter received i.e. children i.e. it receives the components : <AppNa
 
 Then in App.jsx, we used this component i.e. provider component as a wrapper to wrape the components like <AppName />, <AddTodo />, etc so the passed todoItems and the two functions can be accessed by these components i.e. the components inside the provider component.
 
+Now since Understood a lot of the things now its time to understand : addNewItem, deleteItem i.e. who is getting pointed by whom and how all everything. Here :
 
+So in todoItemsStore.jsx and then inside TodoItemsContextProvider we defined the functions : addNewItem and deleteItem then they are passed inside the value of todoItemsContext.Provider. i.e. :
+        todoItemsFromContext: todoItems,
+        addNewItemFromContext: addNewItem,
+        deleteItemFromContext: deleteItem,
+So, todoItemsFromContext is getting pointed by todoItems & addNewItemFromContext is getting pointed by addNewItem & deleteItemFromContext is getting pointed by deleteItem. and then inside of AddTodo.jsx we made obj of useContext(todoItemsContext) i.e. contextObj and from it we took out addNewItemFromContext which is pointing a variable i.e. addNewItemHere. So its like :
+
+todoItemsFromContext -> todoItems (don't know where the poiting goes next)
+
+addNewItemFromContext-->addNewItem-->addNewItemHere
+
+deleteItemFromContext-->deleteItem-->deleteItemHere (from TodoItem.jsx)
 
 ========================================================================================
