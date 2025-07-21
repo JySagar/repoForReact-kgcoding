@@ -1,20 +1,31 @@
+import { useContext } from "react";
+import { AiFillDelete } from "react-icons/ai";
+import { PostList } from "../store/post-list-store";
+
 const Post = ({ postPassed }) => {
+  const { deletePost } = useContext(PostList);
+
   return (
     <div className="card post-card" style={{ width: "30rem" }}>
       <div className="card-body">
         <h5 className="card-title">
           {postPassed.title}
-          <span class="position-absolute top-0 start-100 translate-middle badge rounded-pill bg-danger">
-            {postPassed.reactions}
-            {/* <span class="visually-hidden">unread messages</span> */}
+          <span
+            className="position-absolute top-0 start-100 translate-middle badge rounded-pill bg-danger"
+            onClick={() => deletePost(postPassed.id)}
+          >
+            <AiFillDelete />
+            {/* <span className="visually-hidden">unread messages</span> */}
           </span>
         </h5>
         <p className="card-text">{postPassed.body}</p>
         {postPassed.tags.map((tag) => (
-          <span class="badge text-bg-primary hastag">{tag}</span>
+          <span key={tag} className="badge text-bg-primary hastag">
+            {tag}
+          </span>
         ))}
-        <div class="alert alert-success reactions" role="alert">
-          A simple success alert—check it out!
+        <div className="alert alert-success reactions" role="alert">
+          This post has been reacted by {postPassed.reactions} people.
         </div>
       </div>
     </div>
