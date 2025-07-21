@@ -18,7 +18,13 @@ const CreatePost = () => {
     const postTitlePassed = postTitleElement.current.value;
     const postBodyPassed = postBodyElement.current.value;
     const reactionsPassed = reactionsElement.current.value;
-    const tagsPassed = tagsElement.current.value.split(/(\s+)/);
+    const tagsPassed = tagsElement.current.value.split(" ");
+
+    userIdElement.current.value = "";
+    postTitleElement.current.value = "";
+    postBodyElement.current.value = "";
+    reactionsElement.current.value = "";
+    tagsElement.current.value = "";
 
     addPost(
       userIdPassed,

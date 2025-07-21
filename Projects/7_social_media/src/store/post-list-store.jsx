@@ -14,6 +14,8 @@ const postListReducer = (currentPostList, action) => {
     newPostList = currentPostList.filter(
       (post) => post.id !== action.payload.postIDPassed
     );
+  } else if (action.type === "ADD_POST") {
+    newPostList = [action.payload, ...currentPostList];
   }
 
   return newPostList;
@@ -32,13 +34,17 @@ const PostListProvider = ({ children }) => {
     reactionsCatch,
     tagsCatch
   ) => {
-    console.log(
-      userIdCatch,
-      postTitleCatch,
-      postBodyCatch,
-      reactionsCatch,
-      tagsCatch
-    );
+    dispatchPostList({
+      type: "ADD_POST",
+      payload: {
+        id: Date.now,
+        title: postTitleCatch,
+        body: postBodyCatch,
+        reactions: reactionsCatch,
+        userID: userIdCatch,
+        tags: tagsCatch,
+      },
+    });
   };
 
   const deletePostFP = (postID) => {
