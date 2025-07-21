@@ -1,0 +1,88 @@
+-> (31)_React VS Angular VS Vue :
+
+1. React, Angular, Vue : 
+
+(i) React is a library, while Angular and Vue.js are frameworks.
+(ii) React focuses on UI; Angular and Vue.js offer comprehensive tools for full app development.
+
+2. Library vs Framework :
+
+(i) A library offers specific functionality.
+(ii) A framework provides a set of tools and guidelines.
+(iii) In simpler terms : React is a tool; Angular and Vue.js are toolsets.
+
+3. React's Specialty :
+
+(i) React's main role is crafting dynamic, interactive UIs.
+(ii) It doesn't handle routing, HTTP calls, state management, etc. Now a days there are some libraries available which can handle features like routing is provided by react-router and for state management by redux. So these are just libraries. Its upon us whether we use them or not.
+
+4. React's Flexibility :
+
+(i) React doesn't dictate tool choices for other app aspects like routing and all.
+(ii) It doesn't handle routing, HTTP calls, state management, and more.
+
+5. About Angular and Vue.js :
+
+(i) Angular, developed by Google, provides a robust framework with a steep learning curve.
+(ii) Vue.js is known for its simplicity and ease of integration, making it beginner friendly.
+
+---------------------------------------------------
+
+-> (32)_Using Forms :
+
+1. State Management :
+Each Input's state is stored in component's state.
+
+2. Handling Changes :
+Use onChange to detect input changes.
+
+3. Submission :
+Utilize onSubmit for form submissions and prevent default with event.preventDefault()
+
+4. Validation :
+Implement custom validation or use third-party libraries.
+
+---------------------------------------------------
+
+-> (33)_Use Ref :
+
+1. useRef allows access to DOM elements and retains mutable values without re-renders.
+
+2. Used with the ref attribute for direct DOM interactions.
+
+3. Can hold previous state or prop values.
+
+4. Not limited to DOM references; can hold any value.
+
+5. Refs can be passed as props also.
+
+---------------------------------------------------
+
+-> (34)_Update state from Previous State :
+
+1. Spread Operator : Use to maintain immutability when updating arrays or objects.
+
+2. Functional Updates : Use (existingPosts) => [postData, ...existingPosts] to avoid stale values during asynchronous updates.
+
+---------------------------------------------------
+
+-> (35)_Context API :
+
+1. Prop Drilling : Context API adresses prop drilling; component compostition is an alternative.
+
+2. Folder Setup : Use a store folder for context files.
+
+3. Initialization : Use Reacrt.createContext with initial state and export it.
+
+4. Provider : Implement with contextName.Provider in components.
+
+5. Access Value : Use the useContext hook.
+
+6. Dynamic Data : Combine context value with state.
+
+7. Export Function : Context can also export functions for actions.
+
+8. Logic Seperation : This helps keep the UI and business logic seperate from each other.
+
+----------------------------------------------------
+
