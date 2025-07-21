@@ -25,7 +25,21 @@ const PostListProvider = ({ children }) => {
     DEFAULT_POST_LIST
   );
 
-  const addPostFP = () => {};
+  const addPostFP = (
+    userIdCatch,
+    postTitleCatch,
+    postBodyCatch,
+    reactionsCatch,
+    tagsCatch
+  ) => {
+    console.log(
+      userIdCatch,
+      postTitleCatch,
+      postBodyCatch,
+      reactionsCatch,
+      tagsCatch
+    );
+  };
 
   const deletePostFP = (postID) => {
     dispatchPostList({
