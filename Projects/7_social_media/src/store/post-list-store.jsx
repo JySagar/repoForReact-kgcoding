@@ -22,10 +22,7 @@ const postListReducer = (currentPostList, action) => {
 };
 
 const PostListProvider = ({ children }) => {
-  const [postListFP, dispatchPostList] = useReducer(
-    postListReducer,
-    DEFAULT_POST_LIST
-  );
+  const [postListFP, dispatchPostList] = useReducer(postListReducer, []);
 
   const addPostFP = (
     userIdCatch,
@@ -67,23 +64,23 @@ const PostListProvider = ({ children }) => {
   );
 };
 
-const DEFAULT_POST_LIST = [
-  {
-    id: "1",
-    title: "Going to Mumbai",
-    body: "Hi friends i am going to Mumbai for my vacations. Hope to enjoy a lot.",
-    reactions: 2,
-    userID: "user-9",
-    tags: ["vacation", "Mumbai", "Enjoying"],
-  },
-  {
-    id: "2",
-    title: "Pass ho bhai",
-    body: "4 saal ki masti ka baad bhi ho gaye hain paas. Hard to believe",
-    reactions: 15,
-    userID: "user-12",
-    tags: ["Graduating", "Unbelievable"],
-  },
-];
+// const DEFAULT_POST_LIST = [
+//   {
+//     id: "1",
+//     title: "Going to Mumbai",
+//     body: "Hi friends i am going to Mumbai for my vacations. Hope to enjoy a lot.",
+//     reactions: 2,
+//     userID: "user-9",
+//     tags: ["vacation", "Mumbai", "Enjoying"],
+//   },
+//   {
+//     id: "2",
+//     title: "Pass ho bhai",
+//     body: "4 saal ki masti ka baad bhi ho gaye hain paas. Hard to believe",
+//     reactions: 15,
+//     userID: "user-12",
+//     tags: ["Graduating", "Unbelievable"],
+//   },
+// ];
 
 export default PostListProvider;
