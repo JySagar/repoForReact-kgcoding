@@ -8,6 +8,7 @@ const PostList = () => {
   const handleGetPostsClicked = () => {
     fetch("https://dummyjson.com/posts")
       .then((res) => res.json())
+      // .then(console.log);
       .then((data) => {
         addInitialPosts(data.posts);
       });
