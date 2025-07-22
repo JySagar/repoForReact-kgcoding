@@ -4,6 +4,7 @@ import { createContext } from "react";
 export const PostList = createContext({
   postList: [],
   addPost: () => {},
+  addInitialPosts: () => {},
   deletePost: () => {},
 });
 
@@ -14,6 +15,8 @@ const postListReducer = (currentPostList, action) => {
     newPostList = currentPostList.filter(
       (post) => post.id !== action.payload.postIDPassed
     );
+  } else if (action.type === "ADD_INITIAL_POSTS") {
+    newPostList = action.payload.postsReceived;
   } else if (action.type === "ADD_POST") {
     newPostList = [action.payload, ...currentPostList];
   }
@@ -38,8 +41,17 @@ const PostListProvider = ({ children }) => {
         title: postTitleCatch,
         body: postBodyCatch,
         reactions: reactionsCatch,
-        userID: userIdCatch,
+        userId: userIdCatch,
         tags: tagsCatch,
+      },
+    });
+  };
+
+  const addInitialPostsFP = (postsCatch) => {
+    dispatchPostList({
+      type: "ADD_INITIAL_POSTS",
+      payload: {
+        postsReceived: postsCatch,
       },
     });
   };
@@ -56,6 +68,7 @@ const PostListProvider = ({ children }) => {
       value={{
         postList: postListFP,
         addPost: addPostFP,
+        addInitialPosts: addInitialPostsFP,
         deletePost: deletePostFP,
       }}
     >
