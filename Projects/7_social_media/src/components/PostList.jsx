@@ -1,22 +1,22 @@
-import { useContext, useState } from "react";
+import { useContext, useEffect, useState } from "react";
 import Post from "./Post";
 import { PostList as PostListData } from "../store/post-list-store";
 import WelcomeMessage from "./WelcomeMessage";
 
 const PostList = () => {
   const { postList, addInitialPosts } = useContext(PostListData);
+  const [fetching, setFetching] = useState(false);
 
-  const [datafetched, setDataFetched] = useState(false);
-
-  if (!datafetched) {
+  useEffect(() => {
+    setFetching(true);
     fetch("https://dummyjson.com/posts")
       .then((res) => res.json())
       // .then(console.log);
       .then((data) => {
         addInitialPosts(data.posts);
+        setFetching(false);
       });
-    setDataFetched(true);
-  }
+  }, []);
 
   // const handleGetPostsClicked = () => {};
   return (
