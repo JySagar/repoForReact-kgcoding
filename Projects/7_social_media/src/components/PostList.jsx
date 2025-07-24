@@ -10,14 +10,23 @@ const PostList = () => {
 
   useEffect(() => {
     // The below true happens just before the fetching of data where we will start the loading icon.
+    const controller = new AbortController();
+    const signal = controller.signal;
+
     setFetching(true);
-    fetch("https://dummyjson.com/posts")
+    fetch("https://dummyjson.com/posts", { signal })
       .then((res) => res.json())
       .then((data) => {
         addInitialPosts(data.posts);
         // The below false happens after fetching is done i.e. posts are here so we will stop the loading icon.
         setFetching(false);
       });
+
+    // Below is a cleanup method which calls when this useEffect dies. here for eg : we clicked on create post so home post died so no use of fetching the posts in background so we will pust something here(in return) that stops the fetching.
+    return () => {
+      console.log("Cleaning up the useEffect.");
+      controller.abort();
+    };
   }, []);
 
   // const handleGetPostsClicked = () => {};
