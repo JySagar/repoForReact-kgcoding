@@ -10,6 +10,7 @@ const PostList = () => {
 
   useEffect(() => {
     // The below true happens just before the fetching of data where we will start the loading icon.
+    // So below what is happening is : controller is an object(that we created) of the AboutController() class constructor and pulled out two things : one is signal i.e. a listening Object that is connected to the controller and the other is : about() i.e. a funtion which sends a signal "stop" to the controller which then pass it to the signal. so when signal receives stop then fetch function is stopped.
     const controller = new AbortController();
     const signal = controller.signal;
 
