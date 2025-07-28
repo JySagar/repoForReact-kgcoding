@@ -26,5 +26,3 @@ function CurrentTime() {
 export default CurrentTime;
 
 // 9863486790
-
-// Here all the things that are summed up to this much and all the things that can be done is done till now.
