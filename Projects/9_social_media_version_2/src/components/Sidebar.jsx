@@ -1,4 +1,4 @@
-const Sidebar = ({ selectedTabPassed, setSelectedTabPassed }) => {
+const Sidebar = (/*{ selectedTabPassed, setSelectedTabPassed }*/) => {
   return (
     <div
       className="d-flex flex-column flex-shrink-0 p-3 text-bg-dark sidebar"
