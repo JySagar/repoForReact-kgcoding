@@ -19,6 +19,7 @@ const routerVar = createBrowserRouter([
 createRoot(document.getElementById("root")).render(
   <StrictMode>
     <RouterProvider router={routerVar} />
-    <App />
+    {/* Below not needed as it is now rendered in routerVar */}
+    {/* <App /> */}
   </StrictMode>
 );

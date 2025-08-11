@@ -1,3 +1,5 @@
+import { Link } from "react-router-dom";
+
 const Sidebar = (/*{ selectedTabPassed, setSelectedTabPassed }*/) => {
   return (
     <div
@@ -22,17 +24,11 @@ const Sidebar = (/*{ selectedTabPassed, setSelectedTabPassed }*/) => {
       <ul className="nav nav-pills flex-column mb-auto">
         <li
           className="nav-item"
-          onClick={() => {
-            setSelectedTabPassed("Home");
-          }}
+          // onClick={() => {
+          //   console.log("Home clicked");
+          // }}
         >
-          <a
-            href="#"
-            className={`nav-link text-white ${
-              selectedTabPassed === "Home" && "active"
-            }`}
-            aria-current="page"
-          >
+          <Link to="/" className="nav-link text-white" aria-current="page">
             <svg
               className="bi pe-none me-2"
               width="16"
@@ -42,19 +38,14 @@ const Sidebar = (/*{ selectedTabPassed, setSelectedTabPassed }*/) => {
               <use xlinkHref="#home"></use>
             </svg>
             Home
-          </a>
+          </Link>
         </li>
         <li
-          onClick={() => {
-            setSelectedTabPassed("Create Post");
-          }}
+        // onClick={() => {
+        //   console.log("Create Post clicked");
+        // }}
         >
-          <a
-            href="#"
-            className={`nav-link text-white ${
-              selectedTabPassed === "Create Post" && "active"
-            }`}
-          >
+          <Link to="/create-post" className="nav-link text-white">
             <svg
               className="bi pe-none me-2"
               width="16"
@@ -64,7 +55,7 @@ const Sidebar = (/*{ selectedTabPassed, setSelectedTabPassed }*/) => {
               <use xlinkHref="#speedometer2"></use>
             </svg>
             Create Post
-          </a>
+          </Link>
         </li>
       </ul>
       <hr />

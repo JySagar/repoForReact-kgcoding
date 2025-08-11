@@ -23,6 +23,7 @@ function App() {
           <Header />
           {/* Below line commented as we applied react-router now */}
           {/* {selectedTab === "Home" ? <PostList /> : <CreatePost />} */}
+          {/* Below we put outlet to let route know where to put the destination things */}
           <Outlet />
           <Footer />
         </div>
