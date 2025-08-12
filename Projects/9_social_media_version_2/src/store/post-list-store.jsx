@@ -4,7 +4,6 @@ import { useState, useEffect } from "react";
 
 export const PostList = createContext({
   postList: [],
-  fetching: false,
   addPost: () => {},
   // addInitialPosts: () => {},
   // Above is commented out as store took resposibily for adding the initial posts by bringing the useEffect here. So no need to expose it to childrens.
@@ -29,7 +28,6 @@ const postListReducer = (currentPostList, action) => {
 
 const PostListProvider = ({ children }) => {
   const [postListFP, dispatchPostList] = useReducer(postListReducer, []);
-  const [fetching, setFetching] = useState(false);
 
   const addPostFP = (postCatched) => {
     dispatchPostList({
@@ -55,22 +53,10 @@ const PostListProvider = ({ children }) => {
     });
   };
 
-  useEffect(() => {
-    setFetching(true);
-    const controller = new AbortController();
-    const signal = controller.signal;
-
-    return () => {
-      console.log("Cleaning up the useEffect.");
-      controller.abort();
-    };
-  }, []);
-
   return (
     <PostList.Provider
       value={{
         postList: postListFP,
-        fetching: fetching,
         addPost: addPostFP,
         // addInitialPosts: addInitialPosts,
         deletePost: deletePostFP,
