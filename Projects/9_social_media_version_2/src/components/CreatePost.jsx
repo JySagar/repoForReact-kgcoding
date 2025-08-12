@@ -1,73 +1,21 @@
 import { useContext } from "react";
 import { useRef } from "react";
 import { PostList } from "../store/post-list-store";
-import { useNavigate } from "react-router-dom";
+import { Form, redirect, useNavigate } from "react-router-dom";
 
 const CreatePost = () => {
-  const { addPost } = useContext(PostList);
-  const navigateVar = useNavigate();
+  // const { addPost } = useContext(PostList);
 
-  const userIdElement = useRef();
-  const postTitleElement = useRef();
-  const postBodyElement = useRef();
-  const reactionsElement = useRef();
-  const tagsElement = useRef();
-
-  const handleSubmit = (event) => {
-    event.preventDefault();
-
-    const userIdPassed = userIdElement.current.value;
-    const postTitlePassed = postTitleElement.current.value;
-    const postBodyPassed = postBodyElement.current.value;
-    const reactionsPassed = reactionsElement.current.value;
-    const tagsPassed = tagsElement.current.value.split(" ");
-
-    userIdElement.current.value = "";
-    postTitleElement.current.value = "";
-    postBodyElement.current.value = "";
-    reactionsElement.current.value = "";
-    tagsElement.current.value = "";
-
-    fetch("https://dummyjson.com/posts/add", {
-      method: "POST",
-      headers: { "Content-Type": "application/json" },
-      body: JSON.stringify({
-        // id: Date.now,
-        title: postTitlePassed,
-        body: postBodyPassed,
-        reactions: reactionsPassed,
-        userId: userIdPassed,
-        tags: tagsPassed,
-      }),
-    })
-      .then((res) => res.json())
-      .then((postsReceivedObj) => {
-        console.log("Got response from server", postsReceivedObj);
-        addPost(postsReceivedObj);
-        // Now navigate added below inside addPost so that it doesn't directly go to the home page when even the post is not added so now the post will get added first and then we will navigate to the home page.
-        navigateVar("/");
-      });
-
-    // addPost(
-    //   userIdPassed,
-    //   postTitlePassed,
-    //   postBodyPassed,
-    //   reactionsPassed,
-    //   tagsPassed
-    // );
-
-    // Put at last so that after everything when submit is clicked then it navigates to homepage.
-    // navigateVar("/");
-  };
+  const handleSubmit = (event) => {};
 
   return (
-    <form className="create-post" onSubmit={handleSubmit}>
+    <Form method="POST" className="create-post">
       <div className="mb-3">
         <label htmlFor="userId" className="form-label">
           Enter your User Id here
         </label>
         <input
-          ref={userIdElement}
+          name="userId"
           type="text"
           className="form-control"
           id="userId"
@@ -79,7 +27,7 @@ const CreatePost = () => {
           Post Title
         </label>
         <input
-          ref={postTitleElement}
+          name="title"
           type="text"
           className="form-control"
           id="title"
@@ -91,7 +39,7 @@ const CreatePost = () => {
           Post Content
         </label>
         <textarea
-          ref={postBodyElement}
+          name="body"
           rows={4}
           type="text"
           className="form-control"
@@ -104,7 +52,7 @@ const CreatePost = () => {
           Number of reactions
         </label>
         <input
-          ref={reactionsElement}
+          name="reactions"
           type="text"
           className="form-control"
           id="reactions"
@@ -116,7 +64,7 @@ const CreatePost = () => {
           Enter your hastags here
         </label>
         <input
-          ref={tagsElement}
+          name="tags"
           type="text"
           className="form-control"
           id="tags"
@@ -126,8 +74,37 @@ const CreatePost = () => {
       <button type="submit" className="btn btn-primary">
         Post
       </button>
-    </form>
+    </Form>
   );
 };
+
+export async function createPostAction(data) {
+  const formData = await data.request.formData();
+  const postData = Object.fromEntries(formData);
+  postData.tags = postData.tags.split(" ");
+  console.log(postData);
+
+  fetch("https://dummyjson.com/posts/add", {
+    method: "POST",
+    headers: { "Content-Type": "application/json" },
+    body: JSON.stringify(postData),
+    // body: JSON.stringify({
+    //   // id: Date.now,
+    //   title: postData.title,
+    //   body: postData.body,
+    //   reactions: postData.reactions,
+    //   userId: postData.userId,
+    //   tags: postData.tags,
+    //   }),
+  })
+    .then((res) => res.json())
+    .then((postsReceivedObj) => {
+      console.log("Got response from server", postsReceivedObj);
+      // addPost(postsReceivedObj);
+    });
+
+  // previously what navigate was doing now redirect will do the same i.e. after submitting the form i.e. here when return happens then we are redirected to home page.
+  return redirect("/");
+}
 
 export default CreatePost;

@@ -2,7 +2,7 @@ import { StrictMode } from "react";
 import { createRoot } from "react-dom/client";
 import { RouterProvider, createBrowserRouter } from "react-router-dom";
 import App from "./routes/App.jsx";
-import CreatePost from "./components/CreatePost.jsx";
+import CreatePost, { createPostAction } from "./components/CreatePost.jsx";
 import PostList, { postLoader } from "./components/PostList.jsx";
 
 const routerVar = createBrowserRouter([
@@ -10,8 +10,14 @@ const routerVar = createBrowserRouter([
     path: "/",
     element: <App />,
     children: [
+      // loader makes PostList render only after the loading of fetching inside loader is done.
       { path: "/", element: <PostList />, loader: postLoader },
-      { path: "create-post", element: <CreatePost /> },
+      // action will be called only when any submission is done in CreatePost.
+      {
+        path: "create-post",
+        element: <CreatePost />,
+        action: createPostAction,
+      },
     ],
   },
 ]);
