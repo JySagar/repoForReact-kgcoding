@@ -10,7 +10,7 @@ const routerVar = createBrowserRouter([
     path: "/",
     element: <App />,
     children: [
-      { path: "/", element: <PostList /> },
+      { path: "/", element: <PostList />, loader: () => {} },
       { path: "create-post", element: <CreatePost /> },
     ],
   },
