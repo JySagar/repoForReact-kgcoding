@@ -3,14 +3,14 @@ import { createRoot } from "react-dom/client";
 import { RouterProvider, createBrowserRouter } from "react-router-dom";
 import App from "./routes/App.jsx";
 import CreatePost from "./components/CreatePost.jsx";
-import PostList from "./components/PostList.jsx";
+import PostList, { postLoader } from "./components/PostList.jsx";
 
 const routerVar = createBrowserRouter([
   {
     path: "/",
     element: <App />,
     children: [
-      { path: "/", element: <PostList />, loader: () => {} },
+      { path: "/", element: <PostList />, loader: postLoader },
       { path: "create-post", element: <CreatePost /> },
     ],
   },

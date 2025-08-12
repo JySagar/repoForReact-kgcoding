@@ -31,14 +31,7 @@ const PostListProvider = ({ children }) => {
   const [postListFP, dispatchPostList] = useReducer(postListReducer, []);
   const [fetching, setFetching] = useState(false);
 
-  const addPostFP = (
-    // userIdCatch,
-    // postTitleCatch,
-    // postBodyCatch,
-    // reactionsCatch,
-    // tagsCatch
-    postCatched
-  ) => {
+  const addPostFP = (postCatched) => {
     dispatchPostList({
       type: "ADD_POST",
       payload: postCatched,
@@ -63,21 +56,10 @@ const PostListProvider = ({ children }) => {
   };
 
   useEffect(() => {
-    // The below true happens just before the fetching of data where we will start the loading icon.
-    // So below what is happening is : controller is an object(that we created) of the AboutController() class constructor and pulled out two things : one is signal i.e. a listening Object that is connected to the controller and the other is : about() i.e. a funtion which sends a signal "stop" to the controller which then pass it to the signal. so when signal receives stop then fetch function is stopped.
+    setFetching(true);
     const controller = new AbortController();
     const signal = controller.signal;
 
-    setFetching(true);
-    fetch("https://dummyjson.com/posts", { signal })
-      .then((res) => res.json())
-      .then((data) => {
-        addInitialPosts(data.posts);
-        // The below false happens after fetching is done i.e. posts are here so we will stop the loading icon.
-        setFetching(false);
-      });
-
-    // Below is a cleanup method which calls when this useEffect dies. here for eg : we clicked on create post so home post died so no use of fetching the posts in background so we will pust something here(in return) that stops the fetching.
     return () => {
       console.log("Cleaning up the useEffect.");
       controller.abort();
@@ -98,24 +80,5 @@ const PostListProvider = ({ children }) => {
     </PostList.Provider>
   );
 };
-
-// const DEFAULT_POST_LIST = [
-//   {
-//     id: "1",
-//     title: "Going to Mumbai",
-//     body: "Hi friends i am going to Mumbai for my vacations. Hope to enjoy a lot.",
-//     reactions: 2,
-//     userID: "user-9",
-//     tags: ["vacation", "Mumbai", "Enjoying"],
-//   },
-//   {
-//     id: "2",
-//     title: "Pass ho bhai",
-//     body: "4 saal ki masti ka baad bhi ho gaye hain paas. Hard to believe",
-//     reactions: 15,
-//     userID: "user-12",
-//     tags: ["Graduating", "Unbelievable"],
-//   },
-// ];
 
 export default PostListProvider;
