@@ -1,15 +1,17 @@
 import { useContext } from "react";
 import { useRef } from "react";
 import { PostList } from "../store/post-list-store";
+import { useNavigate } from "react-router-dom";
 
 const CreatePost = () => {
+  const { addPost } = useContext(PostList);
+  const navigateVar = useNavigate();
+
   const userIdElement = useRef();
   const postTitleElement = useRef();
   const postBodyElement = useRef();
   const reactionsElement = useRef();
   const tagsElement = useRef();
-
-  const { addPost } = useContext(PostList);
 
   const handleSubmit = (event) => {
     event.preventDefault();
@@ -42,6 +44,8 @@ const CreatePost = () => {
       .then((postsReceivedObj) => {
         console.log("Got response from server", postsReceivedObj);
         addPost(postsReceivedObj);
+        // Now navigate added below inside addPost so that it doesn't directly go to the home page when even the post is not added so now the post will get added first and then we will navigate to the home page.
+        navigateVar("/");
       });
 
     // addPost(
@@ -51,6 +55,9 @@ const CreatePost = () => {
     //   reactionsPassed,
     //   tagsPassed
     // );
+
+    // Put at last so that after everything when submit is clicked then it navigates to homepage.
+    // navigateVar("/");
   };
 
   return (
