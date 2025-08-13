@@ -14,6 +14,12 @@ const reducerVar = (storeParameter = INITIAL_VALUE, actionParameter) => {
   let newStore = storeParameter;
   if (actionParameter.type === "INCREMENT") {
     newStore = { counter: storeParameter.counter + 1 };
+  } else if (actionParameter.type === "DECREMENT") {
+    newStore = { counter: storeParameter.counter - 1 };
+  } else if (actionParameter.type === "ADDITION") {
+    newStore = {
+      counter: storeParameter.counter + actionParameter.payload.numX,
+    };
   }
   return newStore;
 };
@@ -34,3 +40,7 @@ storeVar.subscribe(subscriberVar);
 // Now to make action:
 
 storeVar.dispatch({ type: "INCREMENT" });
+storeVar.dispatch({ type: "DECREMENT" });
+storeVar.dispatch({ type: "INCREMENT" });
+storeVar.dispatch({ type: "ADDITION", payload: { numX: 7 } });
+storeVar.dispatch({ type: "DECREMENT" });
