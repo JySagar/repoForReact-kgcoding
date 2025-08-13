@@ -11,7 +11,11 @@ const INITIAL_VALUE = {
 // console.log(INITIAL_VALUE.counter);
 
 const reducerVar = (storeParameter = INITIAL_VALUE, actionParameter) => {
-  return { counter: storeParameter.counter + 1 };
+  let newStore = storeParameter;
+  if (actionParameter.type === "INCREMENT") {
+    newStore = { counter: storeParameter.counter + 1 };
+  }
+  return newStore;
 };
 
 // Now to make Store:
