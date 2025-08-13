@@ -5,8 +5,13 @@ const redux = require("redux");
 
 // Now to make reducer:
 
-const reducerVar = (storeParameter, actionParameter) => {
-  return {counter : storeParameter.counter + 1};
+const INITIAL_VALUE = {
+  counter: 0,
+};
+// console.log(INITIAL_VALUE.counter);
+
+const reducerVar = (storeParameter = INITIAL_VALUE, actionParameter) => {
+  return { counter: storeParameter.counter + 1 };
 };
 
 // Now to make Store:
@@ -24,4 +29,4 @@ storeVar.subscribe(subscriberVar);
 
 // Now to make action:
 
-storeVar.dispatch({type: })
+storeVar.dispatch({ type: "INCREMENT" });
