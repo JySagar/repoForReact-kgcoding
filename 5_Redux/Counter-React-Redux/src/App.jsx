@@ -1,35 +1,33 @@
-import { useState } from 'react'
-import reactLogo from './assets/react.svg'
-import viteLogo from '/vite.svg'
-import './App.css'
+import "./App.css";
+import "bootstrap/dist/css/bootstrap.min.css";
 
 function App() {
-  const [count, setCount] = useState(0)
-
   return (
     <>
-      <div>
-        <a href="https://vite.dev" target="_blank">
-          <img src={viteLogo} className="logo" alt="Vite logo" />
-        </a>
-        <a href="https://react.dev" target="_blank">
-          <img src={reactLogo} className="logo react" alt="React logo" />
-        </a>
+      <div class="px-4 py-5 my-5 text-center">
+        {" "}
+        <h1 class="display-5 fw-bold text-body-emphasis">Centered hero</h1>{" "}
+        <div class="col-lg-6 mx-auto">
+          {" "}
+          <p class="lead mb-4">
+            Quickly design and customize responsive mobile-first sites with
+            Bootstrap, the world’s most popular front-end open source toolkit,
+            featuring Sass variables and mixins, responsive grid system,
+            extensive prebuilt components, and powerful JavaScript plugins.
+          </p>{" "}
+          <div class="d-grid gap-2 d-sm-flex justify-content-sm-center">
+            {" "}
+            <button type="button" class="btn btn-primary btn-lg px-4 gap-3">
+              Primary button
+            </button>{" "}
+            <button type="button" class="btn btn-outline-secondary btn-lg px-4">
+              Secondary
+            </button>{" "}
+          </div>{" "}
+        </div>{" "}
       </div>
-      <h1>Vite + React</h1>
-      <div className="card">
-        <button onClick={() => setCount((count) => count + 1)}>
-          count is {count}
-        </button>
-        <p>
-          Edit <code>src/App.jsx</code> and save to test HMR
-        </p>
-      </div>
-      <p className="read-the-docs">
-        Click on the Vite and React logos to learn more
-      </p>
     </>
-  )
+  );
 }
 
-export default App
+export default App;
