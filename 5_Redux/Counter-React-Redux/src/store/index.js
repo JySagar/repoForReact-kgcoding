@@ -2,6 +2,7 @@ import { createStore } from "redux";
 
 const INITIAL_VALUE = {
   counter: 0,
+  privacyToggle: false,
 };
 
 // we can't modify storePara so we returning object i.e. {counter : storePara.counter + 1} (i.e. here a new object which is returned) not updating any value only returning an object.
@@ -14,6 +15,8 @@ const counterReducer = (storePara = INITIAL_VALUE, actionPara) => {
     return { counter: storePara.counter + Number(actionPara.payload.num) };
   } else if (actionPara.type === "SUBTRACT") {
     return { counter: storePara.counter - Number(actionPara.payload.num) };
+  } else if (actionPara.type === "PRIVACY_TOGGLE") {
+    return { privacyToggle: !storePara.privacyToggle };
   }
   return storePara;
 };
