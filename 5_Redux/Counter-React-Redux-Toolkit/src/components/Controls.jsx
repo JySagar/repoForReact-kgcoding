@@ -1,5 +1,6 @@
 import { useRef } from "react";
 import { useDispatch } from "react-redux";
+import { counterActions, privacyActions } from "../store";
 
 const Controls = () => {
   // We don't need to do anything here useDispatch will know becoz there will only be one store so it will ask the provider(i.e. in main.jsx) about the values. and the value that will be dispatched will go to the reducer(i.e. in action parameter) bcoz it is connected. useDispatch() gives us a method to dispatch anything i.e. here an object.
@@ -8,28 +9,26 @@ const Controls = () => {
   const inputElement = useRef();
 
   const handleIncrement = () => {
-    dispatch({ type: "INCREMENT" });
+    dispatch(counterActions.increment());
   };
 
   const handleDecrement = () => {
-    dispatch({ type: "DECREMENT" });
+    dispatch(counterActions.decrement());
   };
 
   const handleAdd = () => {
-    dispatch({ type: "ADD", payload: { num: inputElement.current.value } });
+    // We can pass without num also but also remove it from index.js
+    dispatch(counterActions.add({ num: inputElement.current.value }));
     inputElement.current.value = "";
   };
 
   const handleSubtract = () => {
-    dispatch({
-      type: "SUBTRACT",
-      payload: { num: inputElement.current.value },
-    });
+    dispatch(counterActions.subtract({ num: inputElement.current.value }));
     inputElement.current.value = "";
   };
 
   const handlePrivacyToggle = () => {
-    dispatch({ type: "PRIVACY_TOGGLE" });
+    dispatch(privacyActions.toggle());
   };
 
   return (
@@ -51,7 +50,7 @@ const Controls = () => {
         </button>
         <button
           type="button"
-          class="btn btn-warning ms-2"
+          className="btn btn-warning ms-2"
           onClick={handlePrivacyToggle}
         >
           Privacy Toggle
@@ -64,10 +63,14 @@ const Controls = () => {
           className="number-input"
           ref={inputElement}
         ></input>
-        <button type="button" class="btn btn-info me-2" onClick={handleAdd}>
+        <button type="button" className="btn btn-info me-2" onClick={handleAdd}>
           Add
         </button>
-        <button type="button" class="btn btn-danger" onClick={handleSubtract}>
+        <button
+          type="button"
+          className="btn btn-danger"
+          onClick={handleSubtract}
+        >
           Subtract
         </button>
       </div>

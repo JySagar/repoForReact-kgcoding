@@ -8,7 +8,7 @@ import { useSelector } from "react-redux";
 import PrivacyMessage from "./components/PrivacyMessage";
 
 function App() {
-  const privacyHere = useSelector((store) => store.privacyToggle);
+  const privacyHere = useSelector((store) => store.privacy);
   return (
     <>
       <center className="px-4 py-5 my-5 text-center">

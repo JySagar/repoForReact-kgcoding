@@ -4,28 +4,43 @@ const counterSlice = createSlice({
   name: "counter",
   initialState: { counterVal: 0 },
   reducers: {
-    increment: (state, action) => {
-      console.log(state, action);
+    increment: (state) => {
+      state.counterVal++;
     },
-    decrement: (state, action) => {
-      console.log(state, action);
+    decrement: (state) => {
+      state.counterVal--;
     },
     add: (state, action) => {
-      console.log(state, action);
+      state.counterVal += Number(action.payload.num);
     },
     subtract: (state, action) => {
-      console.log(state, action);
+      state.counterVal -= Number(action.payload.num);
     },
   },
 });
 
-const counterStore = configureStore({
-  reducer: {
-    counter: counterSlice.reducer,
+const privacySlice = createSlice({
+  name: "privacy",
+  // Here we given direct value(i.e. false) instead of making obj like previous slice
+  initialState: false,
+  reducers: {
+    toggle: (state) => {
+      return (state = !state);
+    },
   },
 });
 
-export default counterStore;
+const mainStore = configureStore({
+  reducer: {
+    counter: counterSlice.reducer,
+    // Now here 2nd reducer
+    privacy: privacySlice.reducer,
+  },
+});
+
+export const privacyActions = privacySlice.actions;
+export const counterActions = counterSlice.actions;
+export default mainStore;
 
 // const INITIAL_VALUE = {
 //   counter: 0,
