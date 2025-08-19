@@ -1,6 +1,8 @@
 import { useRef } from "react";
 import { useDispatch } from "react-redux";
-import { counterActions, privacyActions } from "../store";
+// import { counterActions, privacyActions } from "../store";
+import { counterActions } from "../store/counter";
+import { privacyActions } from "../store/privacy";
 
 const Controls = () => {
   // We don't need to do anything here useDispatch will know becoz there will only be one store so it will ask the provider(i.e. in main.jsx) about the values. and the value that will be dispatched will go to the reducer(i.e. in action parameter) bcoz it is connected. useDispatch() gives us a method to dispatch anything i.e. here an object.

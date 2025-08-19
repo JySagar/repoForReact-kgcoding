@@ -1,34 +1,6 @@
-import { configureStore, createSlice } from "@reduxjs/toolkit";
-
-const counterSlice = createSlice({
-  name: "counter",
-  initialState: { counterVal: 0 },
-  reducers: {
-    increment: (state) => {
-      state.counterVal++;
-    },
-    decrement: (state) => {
-      state.counterVal--;
-    },
-    add: (state, action) => {
-      state.counterVal += Number(action.payload.num);
-    },
-    subtract: (state, action) => {
-      state.counterVal -= Number(action.payload.num);
-    },
-  },
-});
-
-const privacySlice = createSlice({
-  name: "privacy",
-  // Here we given direct value(i.e. false) instead of making obj like previous slice
-  initialState: false,
-  reducers: {
-    toggle: (state) => {
-      return (state = !state);
-    },
-  },
-});
+import { configureStore } from "@reduxjs/toolkit";
+import counterSlice from "./counter";
+import privacySlice from "./privacy";
 
 const mainStore = configureStore({
   reducer: {
@@ -38,8 +10,10 @@ const mainStore = configureStore({
   },
 });
 
-export const privacyActions = privacySlice.actions;
-export const counterActions = counterSlice.actions;
+// 👇 export the actions too so Controls.jsx can use them
+// export const counterActions = counterSlice.actions;
+// export const privacyActions = privacySlice.actions;
+
 export default mainStore;
 
 // const INITIAL_VALUE = {
