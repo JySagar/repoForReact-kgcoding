@@ -3,7 +3,6 @@ import { useSelector } from "react-redux";
 
 const Home = () => {
   const items = useSelector((store) => store.items);
-  console.log("Got items", items);
 
   return (
     <main>

@@ -1,6 +1,7 @@
 import { useEffect } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { itemsActions } from "../store/itemsSlice";
+import { fetchStatusAction } from "../store/fetchStatusSlice";
 
 const FetchItems = () => {
   const fetchStatus = useSelector((store) => store.fetchStatus);
@@ -12,11 +13,14 @@ const FetchItems = () => {
     const controller = new AbortController();
     const signal = controller.signal;
 
+    dispatch(fetchStatusAction.markFetchingStarted());
+
     fetch("http://localhost:8080/items", { signal })
       .then((res) => res.json())
       .then(({ items }) => {
+        dispatch(fetchStatusAction.markFetchDone());
+        dispatch(fetchStatusAction.markFetchingFinished());
         dispatch(itemsActions.addInitialItems(items[0]));
-        console.log("Items fetched", items);
       });
 
     return () => {
@@ -25,14 +29,7 @@ const FetchItems = () => {
     // so here useEffect will be called whenever fetchStatus changes
   }, [fetchStatus]);
 
-  return (
-    <>
-      <div>
-        Fetch Done: {fetchStatus.fetchDone}
-        Currently Fetching: {fetchStatus.currentlyFetching}
-      </div>
-    </>
-  );
+  return <></>;
 };
 
 export default FetchItems;
